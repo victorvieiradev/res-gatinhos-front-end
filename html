@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ONG ResGatinhos</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             font-weight: bold;
         }
         body {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             min-height: 100vh;
             background-color: #ffffff;
@@ -23,24 +23,24 @@
         .container {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
+            gap: 5px;
             width: 80%;
             max-width: 1000px;
         }
         .box {
-            width: 150px;
-            height: 200px;
-            border-radius: 10px;
+            width: 250px;
+            height: 300px;
+            border-radius: 5px;
             position: relative;
             display: flex;
             align-items: center;
             text-align: left;
             padding: 10px;
-            font-size: 16;
+            font-size: 20px;
         }
         .box-gray {
             background-color: #F8EAFF;
-            font-size: 20px;
+            font-size: 22px;
         }
         .box-red {
             background-color: #FA0644;
@@ -61,21 +61,21 @@
             grid-row: 2;
         }
         .image-container:nth-child(1) {
-          grid-column: 3;
-          grid-row: 1;
+            grid-column: 3;
+            grid-row: 1;
         }
         .image-container:nth-child(2) {
-          grid-column: 4;
-          grid-row: 1;
+            grid-column: 4;
+            grid-row: 1;
         }
         .image-container:nth-child(3) {
-          grid-column: 4;
-          grid-row: 2;
+            grid-column: 4;
+            grid-row: 2;
         }
         .image-container img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
+            width: 250px;
+            height: 300px;
+            border-radius: 5px;
             position: relative;
         }
         .plus-icon {
@@ -86,7 +86,7 @@
             color: black;
             width: 20px;
             height: 20px;
-            border-radius: 50%;
+            border-radius: 5px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -97,18 +97,66 @@
             color: white;
             text-decoration: none;
         }
+        .form-container {
+            background-color: #F8EAFF;
+            padding: 10px;
+            border-radius: 5px;
+            width: 250px;
+            height: 300px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        .form-container label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-container input[type="text"],
+        .form-container input[type="email"],
+        .form-container input[type="tel"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-container button {
+            background-color: #FA5300;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="box box-gray">ONG ResGatinhos</div>
-        <div class="box box-red"><a href="voluntario.html">SEJA UM VOLUNTÁRIO <span class="plus-icon">+</span></a></div>
-        <div class="box box-orange"></div>
-        <div class="image-container"><img src="https://via.placeholder.com/300" alt="Gato1"></div>
-        <div class="image-container"><img src="https://via.placeholder.com/300" alt="Gato2"></div>
-        <div class="image-container"><img src="https://via.placeholder.com/300" alt="Gato3"></div>
-        <div class="box box-purple"><a href="https://www.instagram.com/ongresgatinhos/" target="_blank"> @ongresgatinhos</div>
-        <div class="image-container"><img src="https://via.placeholder.com/300" alt="Gato4"></div>
+        <div class="box box-gray">ONG Res-Gatinhos</div>
+        <div class="box box-orange">SEJA UM VOLUNTÁRIO</div>
+        <div class="form-container">
+            <h2></h2>
+            <form id="cadastro-form" action="processar_voluntario.php" method="post">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" name="telefone">
+                <button type="submit">Cadastrar</button>
+            </form>
+        </div>
+        <div class="image-container"><img src="https://i.postimg.cc/pryTXnjN/4.png" alt="Gato4"></div>
+        <div class="image-container"><img src="https://i.postimg.cc/t7QjQ1tN/3.png" alt="Gato2"></div>
+        <div class="box box-purple"><a href="https://www.instagram.com/ongresgatinhos/" target="_blank"> @ongresgatinhos</a></div>
+        <div class="box box-red"></div>
+        <div class="image-container"><img src="https://i.postimg.cc/sfZx853S/2.png" alt="Gato3"></div>
     </div>
 </body>
 </html>
