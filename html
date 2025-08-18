@@ -6,13 +6,23 @@
     <title>ONG ResGatinhos</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /*
+        * 1. Acessibilidade: Estilos para elementos interativos.
+        * O ':focus' garante que usuários de teclado tenham um indicador visual claro.
+        *
+        * 2. Acessibilidade: Ajuste de cores para contraste (WCAG 2.1 AA).
+        * As cores foram escurecidas para que o texto branco sobre elas seja legível.
+        *
+        * 3. Acessibilidade: Remoção de 'font-weight: bold' global
+        * O peso da fonte em todo o corpo pode dificultar a leitura para alguns usuários.
+        */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Montserrat', sans-serif;
-            font-weight: bold;
         }
+
         body {
             display: flex;
             flex-direction: column;
@@ -20,6 +30,7 @@
             min-height: 100vh;
             background-color: #ffffff;
         }
+
         .container {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -27,6 +38,7 @@
             width: 80%;
             max-width: 950px;
         }
+
         .box {
             width: 250px;
             height: 300px;
@@ -38,65 +50,71 @@
             padding: 10px;
             font-size: 20px;
         }
+
+        .box a {
+            color: inherit; /* Herda a cor do pai */
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+
         .box-gray {
             background-color: #F8EAFF;
             font-size: 22px;
+            font-weight: bold;
         }
+
         .box-red {
-            background-color: #FA0644;
+            /* WCAG AA: Contraste de cor corrigido */
+            background-color: #C40536; 
             color: white;
             grid-column: 1;
             grid-row: 2;
+            font-weight: bold;
         }
+
         .box-orange {
-            background-color: #FA5300;
+            /* WCAG AA: Contraste de cor corrigido */
+            background-color: #C54000;
             color: white;
             grid-column: 2;
             grid-row: 1;
+            font-weight: bold;
         }
+
         .box-purple {
-            background-color: #AA02FF;
+            /* WCAG AA: Contraste de cor corrigido */
+            background-color: #8F00D8;
             color: white;
             grid-column: 3;
             grid-row: 2;
+            font-weight: bold;
         }
+
         .image-container:nth-child(1) {
             grid-column: 3;
             grid-row: 1;
         }
+
         .image-container:nth-child(2) {
             grid-column: 4;
             grid-row: 1;
         }
+
         .image-container:nth-child(3) {
             grid-column: 4;
             grid-row: 2;
         }
+
         .image-container img {
             width: 250px;
             height: 300px;
             border-radius: 5px;
             position: relative;
         }
-        .plus-icon {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: white;
-            color: black;
-            width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            font-weight: bold;
-        }
-        a {
-            color: white;
-            text-decoration: none;
-        }
+
         .form-container {
             background-color: #F8EAFF;
             padding: 10px;
@@ -108,14 +126,18 @@
             flex-direction: column;
             justify-content: center;
         }
+
         .form-container h2 {
             text-align: center;
             margin-bottom: 5px;
+            font-weight: bold;
         }
+
         .form-container label {
             display: block;
             margin-bottom: 5px;
         }
+
         .form-container input[type="text"],
         .form-container input[type="email"],
         .form-container input[type="tel"] {
@@ -125,6 +147,7 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
+
         .form-container button {
             background-color: #FA5300;
             color: white;
@@ -133,47 +156,95 @@
             border-radius: 5px;
             cursor: pointer;
             width: 100%;
+            font-weight: bold;
+        }
+        
+        /* Acessibilidade: Estilo para o foco em botões e links */
+        a:focus, button:focus {
+            outline: 3px solid #0056b3;
+            outline-offset: 2px;
+        }
+        
+        .feedback-message {
+            margin-top: 10px;
+            padding: 5px;
+            text-align: center;
+        }
+        .feedback-message.error {
+            color: #C40536;
+        }
+        .feedback-message.success {
+            color: #28a745;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="box box-gray">ONG Res-Gatinhos</div>
-        <div class="box box-orange">SEJA UM VOLUNTÁRIO</div>
-        <div class="form-container">
-            <h2></h2>
-            <form id="cadastro-form" action="/cadastro" method="post">
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" required>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email">
-                <label for="telefone">Telefone:</label>
-                <input type="tel" id="telefone" name="telefone">
-                <button type="submit">Cadastrar</button>
-            </form>
-        </div>
-        <div class="image-container"><img src="https://i.postimg.cc/pryTXnjN/4.png" alt="Gato1"></div>
-        <div class="image-container"><img src="https://i.postimg.cc/t7QjQ1tN/3.png" alt="Gato2"></div>
-        <div class="box box-purple"><a href="https://www.instagram.com/ongresgatinhos/" target="_blank"> @ongresgatinhos</a></div>
-        <div class="box box-red">FALE COM A GENTE</div>
-        <div class="image-container"><img src="https://i.postimg.cc/sfZx853S/2.png" alt="Gato3"></div>
-    </div>
+    <main role="main">
+        <div class="container">
+            <h1 class="box box-gray">ONG Res-Gatinhos</h1>
+            <h2 class="box box-orange">SEJA UM VOLUNTÁRIO</h2>
 
+            <section class="form-container">
+                <h2>Cadastre-se</h2>
+                <form id="cadastro-form" action="/cadastro" method="post">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required aria-required="true" autocomplete="name">
+                    
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" autocomplete="email">
+                    
+                    <label for="telefone">Telefone:</label>
+                    <input type="tel" id="telefone" name="telefone" autocomplete="tel">
+                    
+                    <button type="submit" aria-label="Enviar formulário de cadastro">Cadastrar</button>
+                    <div id="feedback" class="feedback-message" role="status" aria-live="polite"></div>
+                </form>
+            </section>
+            
+            <section class="image-container">
+                <img src="https://i.postimg.cc/pryTXnjN/4.png" alt="Um gato de pelo cinza claro usando óculos de sol redondos e pequenos. O animal está posicionado de frente para a câmera, sobre um fundo vermelho.">
+            </section>
+
+            <section class="image-container">
+                <img src="https://i.postimg.cc/t7QjQ1tN/3.png" alt="Um gato deitado, de pelagem branca e laranja com listras marrons, olhando para a câmera com expressão curiosa. O fundo é de cor amarela clara.">
+            </section>
+            
+            <a href="https://www.instagram.com/ongresgatinhos/" target="_blank" class="box box-purple">
+                <span>@ongresgatinhos</span>
+            </a>
+
+            <h2 class="box box-red">FALE COM A GENTE</h2>
+            
+            <section class="image-container">
+                <img src="https://i.postimg.cc/sfZx853S/2.png" alt="Um gato de perfil, de pelagem marrom e branca, com listras escuras. O gato está com a cabeça levemente erguida, olhando para o lado, sobre um fundo rosa claro.">
+            </section>
+        </div>
+    </main>
+    
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            
-            document.getElementById("cadastro-form").addEventListener("submit", function (event) {
-                let nome = document.getElementById("nome").value.trim();
-                let email = document.getElementById("email").value.trim();
-                
-                if (nome === "") {
-                    alert("Por favor, preencha o campo Nome.");
-                    event.preventDefault();
+            const form = document.getElementById("cadastro-form");
+            const nomeInput = document.getElementById("nome");
+            const feedbackMessage = document.getElementById("feedback");
+
+            // Acessibilidade: Altera o feedback do formulário de 'alert' para uma mensagem na página
+            form.addEventListener("submit", function (event) {
+                event.preventDefault(); // Impede o envio padrão do formulário
+
+                if (nomeInput.value.trim() === "") {
+                    feedbackMessage.textContent = "Por favor, preencha o campo Nome.";
+                    feedbackMessage.classList.add("error");
+                    feedbackMessage.classList.remove("success");
+                    nomeInput.focus(); // Coloca o foco no campo para que o usuário saiba onde corrigir
                 } else {
-                    alert("Obrigado por se voluntariar! Entraremos em contato!");
+                    feedbackMessage.textContent = "Obrigado por se voluntariar! Entraremos em contato!";
+                    feedbackMessage.classList.add("success");
+                    feedbackMessage.classList.remove("error");
+                    form.reset(); // Limpa o formulário
                 }
             });
-        
+
+            // Acessibilidade: O efeito de hover também deve funcionar para o foco (navegação por teclado)
             let boxes = document.querySelectorAll(".box");
             boxes.forEach(box => {
                 box.addEventListener("mouseover", function () {
@@ -183,11 +254,17 @@
                 box.addEventListener("mouseleave", function () {
                     this.style.transform = "scale(1)";
                 });
+                box.addEventListener("focus", function () {
+                    this.style.transform = "scale(1.05)";
+                    this.style.transition = "0.3s";
+                });
+                box.addEventListener("blur", function () {
+                    this.style.transform = "scale(1)";
+                });
             });
-        
+
             let images = document.querySelectorAll(".image-container img");
             images.forEach(img => {
-                let originalSrc = img.src;
                 img.addEventListener("mouseover", function () {
                     this.style.transform = "scale(1.05)";
                     this.style.transition = "0.3s";
@@ -195,9 +272,15 @@
                 img.addEventListener("mouseleave", function () {
                     this.style.transform = "scale(1)";
                 });
+                img.addEventListener("focus", function () {
+                    this.style.transform = "scale(1.05)";
+                    this.style.transition = "0.3s";
+                });
+                img.addEventListener("blur", function () {
+                    this.style.transform = "scale(1)";
+                });
             });
         });
-        </script>
-        
+    </script>
 </body>
 </html>
