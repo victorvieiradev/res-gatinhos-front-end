@@ -3,19 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONG ResGatinhos</title>
+    <title>ONG Adoção de Gatos</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /*
-        * 1. Acessibilidade: Estilos para elementos interativos.
-        * O ':focus' garante que usuários de teclado tenham um indicador visual claro.
-        *
-        * 2. Acessibilidade: Ajuste de cores para contraste (WCAG 2.1 AA).
-        * As cores foram escurecidas para que o texto branco sobre elas seja legível.
-        *
-        * 3. Acessibilidade: Remoção de 'font-weight: bold' global
-        * O peso da fonte em todo o corpo pode dificultar a leitura para alguns usuários.
-        */
+        
         * {
             margin: 0;
             padding: 0;
@@ -52,7 +43,7 @@
         }
 
         .box a {
-            color: inherit; /* Herda a cor do pai */
+            color: inherit;
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -67,7 +58,6 @@
         }
 
         .box-red {
-            /* WCAG AA: Contraste de cor corrigido */
             background-color: #C40536; 
             color: white;
             grid-column: 1;
@@ -76,7 +66,6 @@
         }
 
         .box-orange {
-            /* WCAG AA: Contraste de cor corrigido */
             background-color: #C54000;
             color: white;
             grid-column: 2;
@@ -85,7 +74,6 @@
         }
 
         .box-purple {
-            /* WCAG AA: Contraste de cor corrigido */
             background-color: #8F00D8;
             color: white;
             grid-column: 3;
@@ -159,7 +147,6 @@
             font-weight: bold;
         }
         
-        /* Acessibilidade: Estilo para o foco em botões e links */
         a:focus, button:focus {
             outline: 3px solid #0056b3;
             outline-offset: 2px;
@@ -181,7 +168,7 @@
 <body>
     <main role="main">
         <div class="container">
-            <h1 class="box box-gray">ONG Res-Gatinhos</h1>
+            <h1 class="box box-gray">ONG Adoção de Gatos</h1>
             <h2 class="box box-orange">SEJA UM VOLUNTÁRIO</h2>
 
             <section class="form-container">
@@ -209,8 +196,8 @@
                 <img src="https://i.postimg.cc/t7QjQ1tN/3.png" alt="Um gato deitado, de pelagem branca e laranja com listras marrons, olhando para a câmera com expressão curiosa. O fundo é de cor amarela clara.">
             </section>
             
-            <a href="https://www.instagram.com/ongresgatinhos/" target="_blank" class="box box-purple">
-                <span>@ongresgatinhos</span>
+            <a href="" target="_blank" class="box box-purple">
+                <span>@InstagramDaONG</span>
             </a>
 
             <h2 class="box box-red">FALE COM A GENTE</h2>
@@ -227,24 +214,22 @@
             const nomeInput = document.getElementById("nome");
             const feedbackMessage = document.getElementById("feedback");
 
-            // Acessibilidade: Altera o feedback do formulário de 'alert' para uma mensagem na página
             form.addEventListener("submit", function (event) {
-                event.preventDefault(); // Impede o envio padrão do formulário
+                event.preventDefault(); 
 
                 if (nomeInput.value.trim() === "") {
                     feedbackMessage.textContent = "Por favor, preencha o campo Nome.";
                     feedbackMessage.classList.add("error");
                     feedbackMessage.classList.remove("success");
-                    nomeInput.focus(); // Coloca o foco no campo para que o usuário saiba onde corrigir
+                    nomeInput.focus(); 
                 } else {
                     feedbackMessage.textContent = "Obrigado por se voluntariar! Entraremos em contato!";
                     feedbackMessage.classList.add("success");
                     feedbackMessage.classList.remove("error");
-                    form.reset(); // Limpa o formulário
+                    form.reset(); 
                 }
             });
 
-            // Acessibilidade: O efeito de hover também deve funcionar para o foco (navegação por teclado)
             let boxes = document.querySelectorAll(".box");
             boxes.forEach(box => {
                 box.addEventListener("mouseover", function () {
