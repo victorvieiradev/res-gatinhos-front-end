@@ -1,12 +1,23 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONG Adoção de Gatos</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <title>ONG Só Gatinhos RP - Adoção Responsável em Ribeirão Preto</title>
+    <meta name="description" content="ONG dedicada ao resgate, cuidado e adoção de gatos em Ribeirão Preto. Ajude-nos com doações ou adote um amigo.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
     <style>
-        
+        /* PALETA NATUREZA E VIDA */
+        :root {
+            --sage-green: #77A196;    /* Verde Sálvia */
+            --terracotta: #D6835C;    /* Terracota */
+            --sand-dark: #4E4E4E;     /* Areia Escura */
+            --cream-bg: #FFF9F0;      /* Creme */
+            --white: #FFFFFF;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -14,258 +25,506 @@
             font-family: 'Montserrat', sans-serif;
         }
 
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #ffffff;
+        html { scroll-behavior: smooth; }
+
+        /* ACESSIBILIDADE */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--terracotta);
+            color: white;
+            padding: 8px;
+            z-index: 2000;
+            transition: top 0.3s;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .skip-link:focus { top: 0; }
+
+        :focus {
+            outline: 3px solid var(--sage-green);
+            outline-offset: 2px;
         }
 
-        .container {
+        body {
+            background: var(--cream-bg);
+            color: var(--sand-dark);
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        header {
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            background: var(--white);
+            z-index: 1000;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: auto;
+            padding: 15px 20px;
+        }
+
+        .logo { font-weight: bold; font-size: 22px; color: var(--sand-dark); text-decoration: none; }
+        .menu ul { display: flex; gap: 20px; list-style: none; }
+        .menu a { text-decoration: none; color: var(--sand-dark); font-weight: 600; transition: color 0.3s; }
+        .menu a:hover { color: var(--sage-green); }
+
+        /* HOME GRID */
+        .container-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 5px;
-            width: 80%;
-            max-width: 950px;
+            gap: 15px;
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 20px;
         }
 
         .box {
-            width: 250px;
-            height: 300px;
-            border-radius: 5px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            text-align: left;
-            padding: 10px;
-            font-size: 20px;
-        }
-
-        .box a {
-            color: inherit;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-        }
-
-        .box-gray {
-            background-color: #F8EAFF;
-            font-size: 22px;
-            font-weight: bold;
-        }
-
-        .box-red {
-            background-color: #C40536; 
-            color: white;
-            grid-column: 1;
-            grid-row: 2;
-            font-weight: bold;
-        }
-
-        .box-orange {
-            background-color: #C54000;
-            color: white;
-            grid-column: 2;
-            grid-row: 1;
-            font-weight: bold;
-        }
-
-        .box-purple {
-            background-color: #8F00D8;
-            color: white;
-            grid-column: 3;
-            grid-row: 2;
-            font-weight: bold;
-        }
-
-        .image-container:nth-child(1) {
-            grid-column: 3;
-            grid-row: 1;
-        }
-
-        .image-container:nth-child(2) {
-            grid-column: 4;
-            grid-row: 1;
-        }
-
-        .image-container:nth-child(3) {
-            grid-column: 4;
-            grid-row: 2;
-        }
-
-        .image-container img {
-            width: 250px;
-            height: 300px;
-            border-radius: 5px;
-            position: relative;
-        }
-
-        .form-container {
-            background-color: #F8EAFF;
-            padding: 10px;
-            border-radius: 5px;
-            width: 250px;
-            height: 300px;
-            margin-bottom: 20px;
             display: flex;
             flex-direction: column;
+            align-items: center;
             justify-content: center;
-        }
-
-        .form-container h2 {
-            text-align: center;
-            margin-bottom: 5px;
+            height: 250px;
+            border-radius: 12px;
             font-weight: bold;
+            text-align: center;
+            padding: 20px;
+            transition: all .3s ease;
+            text-decoration: none;
         }
 
-        .form-container label {
-            display: block;
-            margin-bottom: 5px;
+        .box:hover { transform: translateY(-5px); filter: brightness(1.05); }
+        .box-gray   { background: #E6E0D4; color: var(--sand-dark); }
+        .box-orange { background: var(--terracotta); color: white; }
+        .box-purple { background: var(--sage-green); color: white; }
+        .box-red    { background: #5D7A71; color: white; }
+        .box-icon { font-size: 2.5rem; display: block; margin-bottom: 12px; }
+
+        .image-container img {
+            width: 100%; height: 250px; object-fit: cover; border-radius: 12px; display: block;
         }
 
-        .form-container input[type="text"],
-        .form-container input[type="email"],
-        .form-container input[type="tel"] {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+        /* GALERIA DE GATINHOS */
+        .gatinhos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
         }
 
-        .form-container button {
-            background-color: #FA5300;
+        .gato-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+        .gato-card:hover { transform: translateY(-10px); }
+
+        .gato-card img { width: 100%; height: 250px; object-fit: cover; }
+
+        .gato-info { padding: 20px; }
+        .gato-info h3 { color: var(--terracotta); margin-bottom: 5px; }
+        .gato-info p { font-size: 0.9rem; color: #666; margin-bottom: 15px; }
+
+        .btn-adotar {
+            background: var(--sage-green);
             color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
+            padding: 8px 20px;
+            border-radius: 50px;
+            text-decoration: none;
             font-weight: bold;
+            font-size: 0.8rem;
+            display: inline-block;
         }
-        
-        a:focus, button:focus {
-            outline: 3px solid #0056b3;
-            outline-offset: 2px;
+
+        /* SEÇÕES */
+        .section { max-width: 1100px; margin: auto; padding: 60px 20px; }
+        .section-title { text-align: center; font-size: 32px; margin-bottom: 40px; color: var(--sand-dark); }
+
+        .card-historia {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-top: 4px solid #eee;
         }
-        
-        .feedback-message {
-            margin-top: 10px;
-            padding: 5px;
+
+        .historia1, .historia2 {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            text-align: justify;
+            color: var(--sand-dark);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .historia1 { grid-column: 1 / -1; margin-top: 12px; }
+        .historia2 { margin-top: 12px; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+
+        <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONG Só Gatinhos RP - Adoção Responsável em Ribeirão Preto</title>
+    <meta name="description" content="ONG dedicada ao resgate, cuidado e adoção de gatos em Ribeirão Preto. Ajude-nos com doações ou adote um amigo.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* PALETA NATUREZA E VIDA */
+        :root {
+            --sage-green: #77A196;
+            --terracotta: #D6835C;
+            --sand-dark: #4E4E4E;
+            --cream-bg: #FFF9F0;
+            --white: #FFFFFF;
+            --alert-red: #A94442;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--cream-bg);
+            color: var(--sand-dark);
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        header {
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            background: var(--white);
+            z-index: 1000;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: auto;
+            padding: 15px 20px;
+        }
+
+        .logo { font-weight: bold; font-size: 22px; color: var(--sand-dark); text-decoration: none; }
+        .menu ul { display: flex; gap: 20px; list-style: none; }
+        .menu a { text-decoration: none; color: var(--sand-dark); font-weight: 600; transition: color 0.3s; }
+        .menu a:hover { color: var(--sage-green); }
+
+        /* SEÇÕES */
+        .section { max-width: 1100px; margin: auto; padding: 60px 20px; }
+        .section-title { text-align: center; font-size: 32px; margin-bottom: 40px; color: var(--sand-dark); }
+
+        .historia1, .historia2 {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            text-align: justify;
+            color: var(--sand-dark);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .historia2 { margin-bottom: 30px; }
+
+        /* CAIXA DE LEIS E DENÚNCIA */
+        .info-leis {
+            background: #fdf2f2;
+            border-left: 5px solid var(--alert-red);
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .info-leis h4 { color: var(--alert-red); margin-bottom: 10px; text-transform: uppercase; font-size: 0.9rem; }
+        .info-leis p { font-size: 0.95rem; font-weight: 600; }
+
+        /* DOAÇÕES (BOTÕES DE VALOR) */
+        .donation-options {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 25px 0;
+        }
+
+        .btn-donate {
+            background: var(--white);
+            border: 2px solid var(--terracotta);
+            color: var(--terracotta);
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .btn-donate:hover {
+            background: var(--terracotta);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* BANCO / PIX */
+        .bank-card {
+            background: var(--white);
+            border: 2px dashed var(--terracotta);
+            padding: 30px;
+            border-radius: 15px;
             text-align: center;
+            margin: 30px 0;
         }
-        .feedback-message.error {
-            color: #C40536;
+
+        .pix-code {
+            font-size: 22px;
+            font-weight: bold;
+            background: var(--cream-bg);
+            padding: 15px;
+            border-radius: 8px;
+            display: inline-block;
+            margin: 15px 0;
+            color: var(--terracotta);
         }
-        .feedback-message.success {
-            color: #28a745;
+
+        /* LISTA DE DESEJOS */
+        .wishlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .wish-category {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid var(--terracotta);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+
+        .wish-category h5 { margin-bottom: 15px; color: var(--terracotta); font-size: 1.1rem; }
+        .wish-category ul { list-style: none; font-size: 0.9rem; color: #555; line-height: 1.8; }
+        .wish-category strong { display: block; margin-top: 10px; color: var(--sand-dark); }
+
+        /* FORMULÁRIO */
+        .contact-form { display: flex; flex-direction: column; gap: 15px; max-width: 600px; margin: auto; }
+        .contact-form input, .contact-form textarea { padding: 12px; border: 1px solid #ddd; border-radius: 6px; width: 100%; background: var(--white); }
+        .btn-submit { background: var(--terracotta); color: white; border: none; padding: 15px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 16px; }
+
+        /* INFO VOLUNTÁRIO */
+        .info-voluntario {
+            background: var(--white);
+            border-left: 4px solid var(--sage-green);
+            padding: 25px;
+            margin-top: 40px;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        /* FOOTER */
+        footer { background: var(--sand-dark); color: var(--cream-bg); padding: 40px 20px; text-align: center; margin-top: 60px; }
+        footer a { color: var(--terracotta); text-decoration: none; font-weight: bold; }
+
+        @media (max-width: 900px) { .container-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { 
+            .container-grid { grid-template-columns: 1fr; } 
+            .historia1, .historia2 { padding: 20px; }
         }
     </style>
 </head>
 <body>
-    <main role="main">
-        <div class="container">
-            <h1 class="box box-gray">ONG Adoção de Gatos</h1>
-            <h2 class="box box-orange">SEJA UM VOLUNTÁRIO</h2>
 
-            <section class="form-container">
-                <h2>Cadastre-se</h2>
-                <form id="cadastro-form" action="/cadastro" method="post">
-                    <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="nome" required aria-required="true" autocomplete="name">
-                    
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" autocomplete="email">
-                    
-                    <label for="telefone">Telefone:</label>
-                    <input type="tel" id="telefone" name="telefone" autocomplete="tel">
-                    
-                    <button type="submit" aria-label="Enviar formulário de cadastro">Cadastrar</button>
-                    <div id="feedback" class="feedback-message" role="status" aria-live="polite"></div>
-                </form>
-            </section>
-            
-            <section class="image-container">
-                <img src="https://i.postimg.cc/pryTXnjN/4.png" alt="Um gato de pelo cinza claro usando óculos de sol redondos e pequenos. O animal está posicionado de frente para a câmera, sobre um fundo vermelho.">
-            </section>
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
 
-            <section class="image-container">
-                <img src="https://i.postimg.cc/t7QjQ1tN/3.png" alt="Um gato deitado, de pelagem branca e laranja com listras marrons, olhando para a câmera com expressão curiosa. O fundo é de cor amarela clara.">
-            </section>
-            
-            <a href="" target="_blank" class="box box-purple">
-                <span>@InstagramDaONG</span>
-            </a>
+    <header>
+        <nav class="menu" aria-label="Menu principal">
+            <a href="#home" class="logo">🐱 Só Gatinhos RP</a>
+            <ul>
+                <li><a href="#quem-somos">QUEM SOMOS</a></li>
+                <li><a href="#doacoes">COMO AJUDAR</a></li>
+                <li><a href="#contato">FALE CONOSCO</a></li>
+            </ul>
+        </nav>
+    </header>
 
-            <h2 class="box box-red">FALE COM A GENTE</h2>
+    <main id="main-content">
+        <section id="home">
+            <div class="historia1">
+                <h1 class="section-title">Bem-vindo à ONG Só Gatinhos RP</h1>
+                <p>Somos uma organização dedicada ao resgate, cuidado e adoção de gatos em Ribeirão Preto. Navegue pelo site para conhecer nossa história, ver os gatinhos disponíveis para adoção, descobrir como ajudar com doações ou se voluntariar.</p>
+            </div>
+            <div class="container-grid">
+                <h1 class="box box-gray"> 🐱 Só Gatinhos RP</h1>
+                <a href="#contato" class="box box-purple"><span class="box-icon">🐾</span>QUERO ADOTAR</a>
+                <a href="#doacoes" class="box box-orange"><span class="box-icon">💝</span>COMO AJUDAR</a>
+                <div class="image-container"><img src="https://i.postimg.cc/pryTXnjN/4.png" alt="É um filhote de pelagem predominantemente branca com manchas em tom cinza-azulado. O filhote está olhando diretamente para a câmera."></div>
+                <div class="image-container"><img src="https://i.postimg.cc/t7QjQ1tN/3.png" alt="Um gato adulto de pelagem malhada em tons de cinza e marrom, sentado de frente, olhando atentamente para a câmera com olhos amarelos."></div>
+                <a href="https://instagram.com/sogatinhosrp" target="_blank" class="box box-purple"><span class="box-icon">📸</span>INSTAGRAM</a>
+                <a href="#contato" class="box box-red"><span class="box-icon">🙋‍♂️</span>SEJA VOLUNTÁRIO</a>
+                <div class="image-container"><img src="https://i.postimg.cc/sfZx853S/2.png" alt="Gatinho filhote branco com manchas malhadas de perfil olhando em diagonal para a câmera."></div>
+            </div>
+        </section>
+
+        <section id="quem-somos" class="section">
+            <h2 class="section-title">Quem Somos</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px;">
+                <article class="card-historia" style="border-top-color: #BDC3C7;"><h3>🌱 Origem</h3><p>Iniciamos cuidando de gatinhos em situação de risco para garantir um futuro digno.</p></article>
+                <article class="card-historia" style="border-top-color: var(--sage-green);"><h3>🏠 Sede</h3><p>Espaço próprio em Ribeirão Preto preparado para reabilitação e acolhimento.</p></article>
+                <article class="card-historia" style="border-top-color: var(--terracotta);"><h3>🛡️ Missão</h3><p>Adoção responsável e controle populacional com castração obrigatória.</p></article>
+                <article class="card-historia" style="border-top-color: #5D7A71;"><h3>📈 Impacto</h3><p>Mais de 90 vidas transformadas anualmente por nossa rede de amor.</p></article>
+                
+                <div class="historia1">
+                    A SÓ GATINHOS, depois de muitos anos de planejamento e esforço, enfim, nasceu! Fruto de muito amor e dedicação da sua fundadora, a nossa casa abriga dezenas de gatinhos abandonados para, após dar a eles muito carinho e cuidado, serem adotados por famílias amantes dos animais, como a nossa! Estamos localizados em Ribeirão Preto/SP, região em que, infelizmente, muitos animais ainda são vítimas de maus-tratos.
+                    Cansada de ver esses bichinhos inocentes sofrendo, a fundadora passou a abriga-los na sua própria casa para, após a reabilitação dos gatinhos, oferece-los à doação. O projeto deu muito certo – muito mesmo-, até que, enfim, conseguimos nossa própria sede, onde podemos abrigar os gatinhos com mais espaço, conforto e alegria! 
+                    A SÓ GATINHOS, assim, tem como principal objetivo abrigar gatinhos abandonados e vítimas de maus tratos para, após oferecer a eles todo cuidado e carinho que merecem, entrega-los a famílias cheias de amor para dar! Além disso, a SÓ GATINHOS entende que é estritamente necessário o controle populacional desses animais, motivo pelo qual todos os bichinhos que passam por nossa sede são devidamente castrados e assim entregues às famílias.
+                    Atualmente, temos cerca de 50 gatos sob nossa responsabilidade, todos em nossa instituição. Além disto, só no ano de 2018 já foram adotados mais de 90 gatinhos, que foram para novas famílias cheias de amor!  💗
+                </div>
+            </div>
+
+            <div class="info-voluntario">
+                <h4 style="margin-bottom: 10px;">Antes de nos contatar:</h4>
+                <ul style="list-style: none; font-size: 0.9rem;">
+                    <li>🐾 Todo o trabalho é <strong>voluntário</strong>.</li>
+                    <li>🐾 Visitas apenas mediante agendamento.</li>
+                    <li>🐾 Siga <strong>@sogatinhosrp</strong> para novidades.</li>
+                </ul>
+            </div>
+
+            <div class="info-leis">
+                    <h4>📢 Proteção Animal e Denúncia</h4>
+                    <p>Maus-tratos a animais é CRIME (Lei Federal 9.605/98). Se você presenciar abandono ou violência, não se cale: Ligue 181 ou procure a delegacia mais próxima.</p>
+                </div>
+        </section>
+
+        <section id="gatinhos" class="section">
+            <h2 class="section-title">Gatinhos para Adoção</h2>
+            <div class="gatinhos-grid">
+                
+                <div class="gato-card">
+                    <img src="https://i.postimg.cc/pryTXnjN/4.png" alt="Gatinho">
+                    <div class="gato-info">
+                        <h3>Mimo</h3>
+                        <p>Macho • 4 meses • Carinhoso e brincalhão</p>
+                        <a href="#contato" class="btn-adotar">TENHO INTERESSE</a>
+                    </div>
+                </div>
+
+                <div class="gato-card">
+                    <img src="https://i.postimg.cc/t7QjQ1tN/3.png" alt="Gato">
+                    <div class="gato-info">
+                        <h3>Fumaça</h3>
+                        <p>Fêmea • 2 anos • Calma e dócil</p>
+                        <a href="#contato" class="btn-adotar">TENHO INTERESSE</a>
+                    </div>
+                </div>
+
+                <div class="gato-card">
+                    <img src="https://i.postimg.cc/sfZx853S/2.png" alt="Gatinho">
+                    <div class="gato-info">
+                        <h3>Pipoca</h3>
+                        <p>Fêmea • 6 meses • Adora outros gatos</p>
+                        <a href="#contato" class="btn-adotar">TENHO INTERESSE</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="doacoes" class="section">
+            <h2 class="section-title">💝 Como Ajudar</h2>
             
-            <section class="image-container">
-                <img src="https://i.postimg.cc/sfZx853S/2.png" alt="Um gato de perfil, de pelagem marrom e branca, com listras escuras. O gato está com a cabeça levemente erguida, olhando para o lado, sobre um fundo rosa claro.">
-            </section>
-        </div>
+            <div class="bank-card">
+                <h3>Escolha um valor para doar:</h3>
+                
+                <div class="donation-options">
+                    <button class="btn-donate">R$ 10,00</button>
+                    <button class="btn-donate">R$ 20,00</button>
+                    <button class="btn-donate">R$ 50,00</button>
+                    <button class="btn-donate">Outro Valor</button>
+                </div>
+
+                <p>Ou utilize nossa chave PIX direta:</p>
+                <div class="pix-code">31.041.489/0001-73</div>
+                <p><strong>Favorecido:</strong> Centro de Adoção Só Gatinhos</p>
+            </div>
+
+            <h3 style="text-align: center; margin: 40px 0 20px;">Lista de Desejos 🐈</h3>
+            <div class="historia2">
+                <h4>Toda doação é bem-vinda! Temos uma lista de itens que são sempre necessários para manter o abrigo funcionando.</h4>
+            </div>
+
+            <div class="wishlist-grid">
+                <div class="wish-category">
+                    <h5>Medicamentos</h5>
+                    <ul>
+                        <strong>Comprimidos:</strong>
+                        <li>Chemital, Vermivet, Drontal, Profender, Vetmax, Helfine.</li>
+                        <strong>Soluções:</strong>
+                        <li>Soro Fisiológico, Vitaminas, Agemoxi, Glicopan.</li>
+                    </ul>
+                </div>
+                <div class="wish-category">
+                    <h5>Higiene e Alimento</h5>
+                    <ul>
+                        <strong>Alimentos:</strong>
+                        <li>Ração (Adultos/Filhotes), Leite em pó Petmilk.</li>
+                        <strong>Limpeza:</strong>
+                        <li>Areia sanitária, Álcool 70%, Água sanitária, Detergente.</li>
+                    </ul>
+                </div>
+                <div class="wish-category">
+                    <h5>Hospitalar e Bem-estar</h5>
+                    <ul>
+                        <strong>Descartáveis:</strong>
+                        <li>Seringas, Agulhas, Luvas, Gaze, Tapetes higiênicos.</li>
+                        <strong>Conforto:</strong>
+                        <li>Caminhas, Cobertores, Mantas e Brinquedos.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="section">
+            <h2 class="section-title">Fale Conosco</h2>
+            <form class="contact-form">
+                <input type="text" placeholder="Nome" required>
+                <input type="email" placeholder="E-mail" required>
+                <textarea rows="5" placeholder="Sua mensagem" required></textarea>
+                <button type="submit" class="btn-submit">ENVIAR AGORA</button>
+            </form>
+        </section>
     </main>
-    
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const form = document.getElementById("cadastro-form");
-            const nomeInput = document.getElementById("nome");
-            const feedbackMessage = document.getElementById("feedback");
 
-            form.addEventListener("submit", function (event) {
-                event.preventDefault(); 
+    <footer>
+        <p><strong>ONG Só Gatinhos - Ribeirão Preto/SP</strong></p>
+        <div style="margin: 15px 0; font-size: 0.9rem; opacity: 0.8;">
+            Rua Cerqueira César, 1139 - Centro<br>
+            Ribeirão Preto/SP - CEP: 14010-130
+        </div>
+        <div style="margin: 20px 0;">
+            <a href="https://facebook.com/sogatinhosrp" target="_blank">Facebook</a> | 
+            <a href="https://instagram.com/sogatinhosrp" target="_blank">Instagram</a>
+        </div>
+        <p><small>© 2026 • Adoção Responsável</small></p>
+    </footer>
 
-                if (nomeInput.value.trim() === "") {
-                    feedbackMessage.textContent = "Por favor, preencha o campo Nome.";
-                    feedbackMessage.classList.add("error");
-                    feedbackMessage.classList.remove("success");
-                    nomeInput.focus(); 
-                } else {
-                    feedbackMessage.textContent = "Obrigado por se voluntariar! Entraremos em contato!";
-                    feedbackMessage.classList.add("success");
-                    feedbackMessage.classList.remove("error");
-                    form.reset(); 
-                }
-            });
-
-            let boxes = document.querySelectorAll(".box");
-            boxes.forEach(box => {
-                box.addEventListener("mouseover", function () {
-                    this.style.transform = "scale(1.05)";
-                    this.style.transition = "0.3s";
-                });
-                box.addEventListener("mouseleave", function () {
-                    this.style.transform = "scale(1)";
-                });
-                box.addEventListener("focus", function () {
-                    this.style.transform = "scale(1.05)";
-                    this.style.transition = "0.3s";
-                });
-                box.addEventListener("blur", function () {
-                    this.style.transform = "scale(1)";
-                });
-            });
-
-            let images = document.querySelectorAll(".image-container img");
-            images.forEach(img => {
-                img.addEventListener("mouseover", function () {
-                    this.style.transform = "scale(1.05)";
-                    this.style.transition = "0.3s";
-                });
-                img.addEventListener("mouseleave", function () {
-                    this.style.transform = "scale(1)";
-                });
-                img.addEventListener("focus", function () {
-                    this.style.transform = "scale(1.05)";
-                    this.style.transition = "0.3s";
-                });
-                img.addEventListener("blur", function () {
-                    this.style.transform = "scale(1)";
-                });
-            });
-        });
-    </script>
 </body>
 </html>
